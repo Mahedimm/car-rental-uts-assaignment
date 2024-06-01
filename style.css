@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #131313;
+} */
+
+.container {
+  position: relative;
+}
+
+.container .card {
+  position: relative;
+  width: 420px;
+  height: 550px;
+  background: #232323;
+  border-radius: 20px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.container .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff204e;
+  clip-path: circle(150px at 80% 20%);
+  transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+  clip-path: circle(300px at 80% -20%);
+}
+
+.container .card:after {
+  content: "CAR";
+  position: absolute;
+  top: 30%;
+  left: -20%;
+  font-size: 12em;
+  font-weight: 800;
+  font-style: italic;
+  color: rgba(255, 255, 25, 0.05);
+}
+
+.container .card .imgBx {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  width: 100%;
+  height: 220px;
+  transition: 0.5s;
+}
+
+.container .card:hover .imgBx {
+  top: 0%;
+  transform: translateY(0%);
+}
+
+.container .card .imgBx img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  width: 270px;
+}
+
+.container .card .contentBx {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+  z-index: 10;
+}
+
+.container .card:hover .contentBx {
+  height: 210px;
+}
+
+.container .card .contentBx h2 {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0;
+}
+
+.container .card .contentBx .size,
+.container .card .contentBx .color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.container .card:hover .contentBx .size {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx .color {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.6s;
+}
+
+.container .card .contentBx .size h3,
+.container .card .contentBx .color h3 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px;
+}
+
+.container .card .contentBx .size span {
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  display: inline-block;
+  color: #111;
+  background: #fff;
+  margin: 0 5px;
+  transition: 0.5s;
+  color: #111;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container .card .contentBx .size span:hover {
+  background: #9bdc28;
+}
+
+.container .card .contentBx .color span {
+  width: 20px;
+  height: 20px;
+  background: #ff0;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.container .card .contentBx .color span:nth-child(2) {
+  background: #9bdc28;
+}
+
+.container .card .contentBx .color span:nth-child(3) {
+  background: #03a9f4;
+}
+
+.container .card .contentBx .color span:nth-child(4) {
+  background: #e91e63;
+}
+
+.container .card .contentBx button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #a0153e;
+  border-radius: 4px;
+
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.5s;
+  margin-bottom: 10px;
+}
+
+.container .card:hover .contentBx button {
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.75s;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+html,
+body {
+  height: 100%;
+}
+.banner {
+  width: 100%;
+  height: 40%;
+  background: #a0153e;
+  font-size: 0;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+}
+.topnav {
+  background-color: #00224d;
+  overflow: hidden;
+  height: 80px;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 3cap;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #a0153e;
+  color: white;
+}
+
+.topnav .active {
+  background-color: #ff204e;
+  color: white;
+}
+
+.topnav .right {
+  background-color: #ff204e;
+  float: right;
+}
+
+.topnav-checkout {
+  background-color: #ff204e;
+  overflow: hidden;
+}
+
+.topnav-checkout a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
+  width: 100%;
+  height: 50px;
+  background-color: #83c5be;
+}
+
+.button {
+  background-color: #ff204e;
+  border-radius: 25px;
+}
+
+.button.button-rsv {
+  height: 50px;
+  width: 200px;
+  color: white;
+  border-radius: 25px;
+}
+
+.button.button-check {
+  height: 50px;
+  width: 400px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+  margin-right: 75px;
+}
+
+.button.button-check:hover {
+  background-color: #a0153e;
+  color: white;
+}
+
+.button.button-add {
+  height: 50px;
+  width: 400px;
+  color: white;
+  border-radius: 25px;
+}
+
+.button.button-add:hover {
+  background-color: #a0153e;
+  color: white;
+}
+
+.button.button-delete {
+  height: 34px;
+  width: 85px;
+  color: white;
+  border-radius: 5px;
+}
+
+.button.button-delete:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.button.button-out {
+  height: 34px;
+  width: 185px;
+  color: white;
+  border-radius: 5px;
+}
+
+.button.button-out:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.car-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 10px 10px 10px;
+  width: 100vw;
+  color: "black";
+}
+
+.car-img-container {
+  max-width: 300px;
+  height: auto;
+  left: 0px;
+  right: 0px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  width: 400px;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+}
+
+.car-item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.reservation {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.checkout-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Add styles for the search box */
+.search-box {
+  margin-top: 10px;
+  padding: 10px 30px;
+  border-radius: 25px;
+  border: 2px solid #ccc;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.search-box:hover {
+  border-color: #ff204e;
+}
+
+.search-box:focus {
+  border-color: #ff204e;
+  box-shadow: #5d0e41;
+}
+
+/* Styles for the footer */
+footer {
+  background-color: #00224d;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Add styles for the input boxes */
+.input-box {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-size: 14px;
+}
+
+.input-box:hover {
+  border-color: #ff204e;
+}

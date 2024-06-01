@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Online Car Rental</title>
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <div class="topnav">
+      <a class="active" href="index.html">
+        <img class="logo" src="" />Online Car Rental</a
+      >
+      <!-- Home Button -->
+      <a class="right" onClick="checkReservation()">
+        <!-- Reservation Button -->
+        View my car reservation
+      </a>
+    </div>
+    <div class="banner">
+      <img src="/images/banner.png" />
+    </div>
+    <center>
+      <div class="">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search
+        for cars..." onkeyup="filterCars()"
+      </div>
+    </center>
+    <!-- Array of cars retrieved from cars.json -->
+
+    <div class="car-list"></div>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>MD Mahedi Hasan</p>
+      <p>ID: 25097181</p>
+      <p>
+        &copy; Assignment 2- Online Car Rental System Using AJAX and JSON. All
+        rights reserved.
+      </p>
+    </footer>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    let cars = [];
+    // Set the reservation session
+    let reservation = window.sessionStorage.getItem("session_res")
+      ? JSON.parse(window.sessionStorage.getItem("session_res"))
+      : [];
+
+    $(document).ready(function () {
+      $.getJSON("cars.json", function (result) {
+        cars = result;
+        displayCars(cars);
+      });
+    });
+
+    function displayCars(carArray) {
+      $(".car-list").empty();
+      $.each(carArray, function (i, field) {
+        let carComponent = `
+        <div class="container">        
+        <div class="card">
+                    <div class="imgBx">
+                      <img src=${field.img}>
+                    </div>
+                    <div class="contentBx">
+                      <h2>${field.brand} ${field.model} (${field.model_year})</h2>
+                      <h2>${field.price_per_day} </h2>
+                      <div class="size">
+                        <h3>${field.availability}</h3>
+                      </div>
+                      <div class="color">
+                        <h3>$${field.price_per_day} p/day</h3>
+                      </div>
+                      <button onClick="addToReservation(${field.id})">Book Now</button>
+                    </div>
+                  </div>
+                </div>
+            `;
+        $(".car-list").append(carComponent);
+      });
+    }
+
+    function filterCars() {
+      let query = $("#searchBox").val().toLowerCase();
+      let filteredCars = cars.filter(
+        (car) =>
+          car.brand.toLowerCase().includes(query) ||
+          car.model.toLowerCase().includes(query) ||
+          car.model_year.toString().includes(query)
+      );
+      displayCars(filteredCars);
+    }
+
+    function addToReservation(id) {
+      let car = cars.find((car) => car.id == id);
+      let res = reservation.find((car) => car.id == id);
+      let message = `Sorry ${car.brand} ${car.model} is not available now. Please try other cars.`; // Car unavailable
+      if (res) {
+        message = `You have already added ${res.brand} ${res.model} to your reservation.`; // Car already in reservation
+      } else if (car.availability == "Available") {
+        // Car available
+        reservation.push(car); // Car added to reservation
+        message = `${car.brand} ${car.model} added to reservation`;
+      }
+      alert(message);
+      return true;
+    }
+
+    function checkReservation() {
+      window.sessionStorage.setItem("session_res", JSON.stringify(reservation));
+      window.location.href = "reservation.html";
+    }
+  </script>
+</html>
